@@ -12,6 +12,13 @@ public class ExercisePatientApplication {
     public static void main(String[] args) {
         SpringApplication.run(ExercisePatientApplication.class, args);
 
+        Doctor leo = new Doctor("Leo Lebon", "Cardiologist");
+        Patient tom = new Patient("Tom Verlaet", "750510 105M16");
+
+        Consultation consult = new Consultation(leo, tom);
+
+        System.out.println(consult);
+
         System.exit(0); }
 
 }
