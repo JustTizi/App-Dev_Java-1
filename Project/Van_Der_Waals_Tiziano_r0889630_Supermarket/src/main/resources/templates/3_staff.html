@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Staff Member</title>
+    <link rel="stylesheet" type="text/css" href="img/style.css" />
+
+</head>
+<body>
+
+    <form action="/submitstaff">
+        <p>
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName"/>
+        </p>
+        <p>
+            <label for="surname">Surname:</label>
+            <input type="text" name="surname" id="surname"/>
+        </p>
+        <p>
+            <label for="employed">Employed since (dd/mm/yyyy):</label>
+            <input type="text" name="employed" id="employed"/>
+        </p>
+        <p>
+            <input type="checkbox" name="student" id="student">
+            <label for="student">working student?</label>
+        </p>
+
+        <p>
+            <input type="submit" name="submit" value="Confirm staff member"/>
+        </p>
+
+    </form>
+
+    <a href="/">Back to homepage</a>
+
+</body>
+</html>
