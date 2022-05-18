@@ -33,6 +33,8 @@ public class MainController {
     @RequestMapping("/1_customer")
     public String customer(Model model) {
 
+        model.addAttribute("supermarketList", supermarketArrayList);
+
         return "1_customer";
     }
 
@@ -45,6 +47,12 @@ public class MainController {
 
         Customer customer = new Customer(firstName, surname);
         customer.setYearOfBirth(yearOfBirth);
+
+        int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
+
+        Supermarket returnSupermarket = supermarketArrayList.get(supermarketIndex);
+        
+        returnSupermarket.registerCustomer(customer);
 
         model.addAttribute("customer", customer);
 
@@ -70,6 +78,8 @@ public class MainController {
 
         staff.setStartDate(employedSince);
         staff.setStudent(isStudent);
+
+        staffArrayList.add(staff);
 
         model.addAttribute("staff", staff);
 

@@ -20,8 +20,11 @@
             <label for="birthyear">Year of Birth:</label>
             <input type="text" name="birthyear" id="birthyear"/>
         </p>
+        <p th:each="supermarket : ${supermarketList}">
+            <label th:for="${supermarketStat.index}" th:text="${supermarket.getName()}"></label>
+            <input type="radio" name="supermarketIndex" th:value="${supermarketStat.index}" th:id="${supermarketStat.index}" th:checked="${supermarketStat.index} == 0">
         <p>
-            <input type="submit" name="submit" value="Continue without cardnumber"/>
+            <input type="submit" name="submit" value="Continue and generate cardnumber"/>
         </p>
     </form>
     <a href="/">Back to homepage</a>
