@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>All our customers</title>
-    <link rel="stylesheet" type="text/css" href="img/style.css"/>
+    <link rel="stylesheet" type="text/css" href="img/allcustomers.css"/>
 </head>
 <body>
 
-<h1>All our customers</h1>
-
-    <ol>
-        <li th:each="customer : ${customerList}" th:text="${customer.getFirstName()} ${customer.getSurName()}">
-            <ul>
-                <li th:text="${customer.getYearOfBirth()}"></li>
-                <li th:text="${customer.getCardNumber()}"></li>
-                <li>shopping list:</li>
+    <h1>All our customers</h1>
+    <div>
+        <ol id="customers">
+            <li th:each="customer : ${customerList}"><span th:text="${customer.toString()}"></span>
                 <ul>
-                    <li th:each="item : ${customer.getShoppingList()}">
-                        <ul>
-                            <li th:text="${item}"></li>
-                        </ul>
-                    </li>
+                    <li th:text="'year of birth: ' + ${customer.getYearOfBirth()}"></li>
+                    <li th:text="'cardnumber: ' + ${customer.getCardNumber()}"></li>
+                    <li>shopping list:</li>
+                    <ul>
+                        <li th:each="item : ${customer.getShoppingList()}" th:text="${item}"></li>
+                    </ul>
                 </ul>
-            </ul>
-        </li>
-    </ol>
-
+            </li>
+        </ol>
+    </div>
     <a href="/">Back to homepage</a>
 
 </body>

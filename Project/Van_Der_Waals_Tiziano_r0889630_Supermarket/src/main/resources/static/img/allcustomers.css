@@ -1,0 +1,31 @@
+/*add a self-selected stylesheet here*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+body {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial;
+    background-color: black;
+    color: #cdb7b5;
+}
+
+div {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+ol {
+    text-align: left;
+    display: inline-block;
+}
+
+
+ol li {
+    padding: 1rem;
+}
