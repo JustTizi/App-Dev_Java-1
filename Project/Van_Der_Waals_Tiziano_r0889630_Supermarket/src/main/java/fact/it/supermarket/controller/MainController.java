@@ -13,11 +13,11 @@ import java.time.format.DateTimeFormatter;
 
 @Controller
 public class MainController {
-/*  You will need these ArrayLists in part 3 of the project assignment.
+
     private ArrayList<Staff> staffArrayList;
     private ArrayList<Customer> customerArrayList;
     private ArrayList<Supermarket> supermarketArrayList;
-*/
+
 //    Write your code here
 
     @RequestMapping("/")
@@ -73,7 +73,6 @@ public class MainController {
 
 
 
-/*You wll need these methods in part 3 of the project assignment
     private ArrayList<Staff> fillStaffMembers() {
         ArrayList<Staff> staffMembers = new ArrayList<>();
 
@@ -158,5 +157,4 @@ public class MainController {
         return supermarkets;
     }
 
- */
 }
