@@ -1,1 +1,48 @@
 /*add a self-selected stylesheet here*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial;
+    background-color: black;
+    color:
+        #cdb7b5;
+}
+
+#titlediv {
+    margin-bottom: 30px;
+    display: grid;
+    place-items: center;
+}
+
+#title {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 2rem;
+    text-decoration: none;
+    color:
+        cyan;
+    border: cyan 0.125em solid;
+    padding: .25em 1em;
+    border-radius: .25em;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.15), 0 0 0.25em cyan;
+    box-shadow: 0 0 .35em 0 cyan, inset 0 0 .35em 0 cyan;
+    position: relative;
+}
+
+#title::before {
+    content: "";
+    position: absolute;
+    background: cyan;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(2em) rotateX(40deg) scale(1, 0.45);
+    filter: blur(1em);
+    opacity: 0.7;
+}
