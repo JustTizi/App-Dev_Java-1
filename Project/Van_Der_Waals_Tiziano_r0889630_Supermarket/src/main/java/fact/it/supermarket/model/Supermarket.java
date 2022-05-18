@@ -36,7 +36,12 @@ public class Supermarket {
     }
 
     public Department searchDepartmentByName(String name) {
-        return this.departmentList.stream().filter(department -> department.getName().equals(name)).findFirst().orElse(null);
+        for (Department department : this.departmentList) {
+            if (department.getName().equals(name)) {
+                return department;
+            }
+        }
+        return null;
     }
 
     public void registerCustomer(Customer customer) {
