@@ -3,7 +3,7 @@ package fact.it.supermarket.model;
 import java.util.ArrayList;
 
 public class Supermarket {
-    private ArrayList<Department> departmentList = new ArrayList<Department> ();
+    private final ArrayList<Department> departmentList = new ArrayList<Department> ();
     private String name;
     private int numberCustomers;
 

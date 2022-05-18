@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All our customers</title>
+    <link rel="stylesheet" type="text/css" href="img/style.css"/>
+</head>
+<body>
+
+<h1>All our customers</h1>
+
+    <ol>
+        <li th:each="customer : ${customerList}" th:text="${customer.getFirstName()} ${customer.getSurName()}">
+            <ul>
+                <li th:text="${customer.getYearOfBirth()}"></li>
+                <li th:text="${customer.getCardNumber()}"></li>
+                <li>shopping list:</li>
+                <ul>
+                    <li th:each="item : ${customer.getShoppingList()}">
+                        <ul>
+                            <li th:text="${item}"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </ul>
+        </li>
+    </ol>
+
+    <a href="/">Back to homepage</a>
+
+</body>
+</html>

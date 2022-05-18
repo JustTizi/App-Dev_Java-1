@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All our staff</title>
+    <link rel="stylesheet" type="text/css" href="img/style.css"/>
+</head>
+<body>
+
+    <h1>All our staff</h1>
+
+    <ul>
+        <li th:each="staff : ${staffList}" th:text="${staff.toString()}"></li>
+    </ul>
+
+    <a href="/">Back to homepage</a>
+
+</body>
+</html>

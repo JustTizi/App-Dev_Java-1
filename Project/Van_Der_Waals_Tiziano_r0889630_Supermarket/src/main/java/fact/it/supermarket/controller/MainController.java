@@ -2,14 +2,18 @@ package fact.it.supermarket.controller;
 
 
 import fact.it.supermarket.model.Customer;
+import fact.it.supermarket.model.Department;
 import fact.it.supermarket.model.Staff;
+import fact.it.supermarket.model.Supermarket;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @Controller
 public class MainController {
@@ -17,6 +21,7 @@ public class MainController {
     private ArrayList<Staff> staffArrayList;
     private ArrayList<Customer> customerArrayList;
     private ArrayList<Supermarket> supermarketArrayList;
+
 
 //    Write your code here
 
@@ -71,7 +76,21 @@ public class MainController {
         return "4_staffwelcome";
     }
 
+    @RequestMapping("/5_allstaff")
+    public String allstaff(Model model) {
 
+        model.addAttribute("staffList", staffArrayList);
+
+        return "5_allstaff";
+    }
+
+    @RequestMapping("/6_allcustomers")
+    public String allcustomers(Model model) {
+
+        model.addAttribute("customerList", customerArrayList);
+
+        return "6_allcustomers";
+    }
 
     private ArrayList<Staff> fillStaffMembers() {
         ArrayList<Staff> staffMembers = new ArrayList<>();
@@ -117,9 +136,12 @@ public class MainController {
         customer2.setYearOfBirth(1996);
         Customer customer3 = new Customer("Maria", "Bonetta");
         customer3.setYearOfBirth(1998);
+        Customer customer4 = new Customer("Tiziano", "Van der Waals");
+        customer4.setYearOfBirth(2003);
         customers.add(customer1);
         customers.add(customer2);
         customers.add(customer3);
+        customers.add(customer4);
         customers.get(0).addToShoppingList("Butter");
         customers.get(0).addToShoppingList("Bread");
         customers.get(1).addToShoppingList("Apple");
@@ -157,4 +179,10 @@ public class MainController {
         return supermarkets;
     }
 
+    @PostConstruct
+    private void fillData() {
+        staffArrayList = fillStaffMembers();
+        customerArrayList = fillCustomers();
+        supermarketArrayList = fillSupermarkets();
+    }
 }
