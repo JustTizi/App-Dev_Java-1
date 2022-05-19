@@ -47,11 +47,10 @@ public class MainController {
 
         Customer customer = new Customer(firstName, surname);
         customer.setYearOfBirth(yearOfBirth);
+        customerArrayList.add(customer);
 
         int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
-
         Supermarket returnSupermarket = supermarketArrayList.get(supermarketIndex);
-        
         returnSupermarket.registerCustomer(customer);
 
         model.addAttribute("customer", customer);
@@ -100,6 +99,68 @@ public class MainController {
         model.addAttribute("customerList", customerArrayList);
 
         return "6_allcustomers";
+    }
+
+    @RequestMapping("/7_supermarket")
+    public String supermarket(Model model) {
+
+        return "7_supermarket";
+    }
+
+    @RequestMapping("/submitsupermarket")
+    public String submitsupermarket(HttpServletRequest request, Model model) {
+
+        String name = request.getParameter("supermarket");
+
+        Supermarket supermarket = new Supermarket(name);
+
+        supermarketArrayList.add(supermarket);
+
+        model.addAttribute("supermarketList", supermarketArrayList);
+
+        return "8_allsupermarkets";
+    }
+
+    @RequestMapping("/8_allsupermarkets")
+    public String allsupermarkets(Model model) {
+
+        model.addAttribute("supermarketList", supermarketArrayList);
+
+        return "8_allsupermarkets";
+    }
+
+    @RequestMapping("/9_department")
+    public String department(Model model) {
+
+        model.addAttribute("supermarketList", supermarketArrayList);
+        model.addAttribute("staffList", staffArrayList);
+
+        return "9_department";
+    }
+
+    @RequestMapping("/submitdepartment")
+    public String submitdepartment(HttpServletRequest request, Model model) {
+
+        String departmentName = request.getParameter("department");
+        String photo = request.getParameter("photo");
+        boolean isRefrigerated = (request.getParameter("refrigerated") != null);
+        int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
+        int staffIndex = Integer.parseInt(request.getParameter("staffIndex"));
+
+        Supermarket returnSupermarket = supermarketArrayList.get(supermarketIndex);
+        Staff returnStaff = staffArrayList.get(staffIndex);
+
+        Department department = new Department(departmentName);
+        department.setPhoto(photo);
+        department.setRefrigerated(isRefrigerated);
+
+        returnSupermarket.addDepartment(department);
+
+        model.addAttribute("supermarket", returnSupermarket);
+        model.addAttribute("supermarketList", supermarketArrayList);
+        model.addAttribute("staffList", staffArrayList);
+
+        return "10_alldepartments";
     }
 
     private ArrayList<Staff> fillStaffMembers() {

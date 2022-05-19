@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All our departments</title>
+  <link rel="stylesheet" type="text/css" href="img/allcustomers.css"/>
+</head>
+<body>
+
+<h1 th:text="'Departments of ' + ${supermarket.getName()}"></h1>
+<div>
+  <ol id="customers">
+    <li th:each="department : ${supermarket.getDepartmentList()}"><span th:text="${department}"></span>
+    </li>
+  </ol>
+</div>
+<a href="/">Back to homepage</a>
+
+</body>
+</html>
