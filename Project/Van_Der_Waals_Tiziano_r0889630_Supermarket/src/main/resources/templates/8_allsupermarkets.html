@@ -10,9 +10,10 @@
     <h1>Supermarkets (and number of departments):</h1>
 
     <ul>
-        <li th:each="supermarket : ${supermarketList}" th:text="${supermarket.getName() + '(' + supermarket.getNumberOfDepartments() + ')'}"></li>
+        <li th:each="supermarket : ${supermarketList}">
+            <a th:href="@{/10_alldepartments(supermarketIndex=${supermarketStat.index})}" th:text="${supermarket.getName()} + ' (' + ${supermarket.getDepartmentList().size()} + ')'"></a>
+        </li>
     </ul>
-
 
 <a href="/">Back to homepage</a>
 

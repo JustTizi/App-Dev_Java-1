@@ -1,7 +1,6 @@
 package fact.it.supermarket.model;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Customer extends Person {
 

@@ -141,7 +141,7 @@ public class MainController {
     @RequestMapping("/submitdepartment")
     public String submitdepartment(HttpServletRequest request, Model model) {
 
-        String departmentName = request.getParameter("department");
+        String departmentName = request.getParameter("departmentName");
         String photo = request.getParameter("photo");
         boolean isRefrigerated = (request.getParameter("refrigerated") != null);
         int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
