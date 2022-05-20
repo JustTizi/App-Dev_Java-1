@@ -174,6 +174,47 @@ public class MainController {
         return "10_alldepartments";
     }
 
+    @RequestMapping("/10_alldepartments")
+    public String alldepartments(HttpServletRequest request, Model model) {
+
+        int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
+
+        Supermarket returnSupermarket = supermarketArrayList.get(supermarketIndex);
+        model.addAttribute("supermarket", returnSupermarket);
+        model.addAttribute("supermarketList", supermarketArrayList);
+        model.addAttribute("staffList", staffArrayList);
+
+        return "10_alldepartments";
+    }
+
+    @RequestMapping("/searchdepartment")
+    public String searchdepartment(HttpServletRequest request, Model model) {
+
+        String departmentName = request.getParameter("departmentName");
+
+        Department department = null;
+
+        for (Supermarket supermarket : supermarketArrayList) {
+            for (Department department1 : supermarket.getDepartmentList()) {
+                if (department1.getName().equals(departmentName)) {
+                    department = department1;
+                }
+            }
+        }
+
+        if (department == null) {
+            model.addAttribute("errorMessage", "There is no department with the name '" + departmentName + "'");
+            return "error";
+        }
+
+
+        model.addAttribute("staff", department.getResponsible());
+        model.addAttribute("department", department);
+
+        return "11_departmentbyname";
+    }
+
+
     private ArrayList<Staff> fillStaffMembers() {
         ArrayList<Staff> staffMembers = new ArrayList<>();
 

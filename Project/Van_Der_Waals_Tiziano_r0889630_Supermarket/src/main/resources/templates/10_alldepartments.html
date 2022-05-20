@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>All our departments</title>
-  <link rel="stylesheet" type="text/css" href="img/allcustomers.css"/>
+  <link rel="stylesheet" type="text/css" href="img/allcustomers.css" />
 </head>
+
 <body>
 
-<h1 th:text="'Departments of ' + ${supermarket.getName()}"></h1>
-<div>
-  <ol>
-    <li th:each="department : ${supermarket.getDepartmentList()}"><span th:text="${department.getName()}"></span>
-    </li>
-  </ol>
-</div>
-<a href="/">Back to homepage</a>
+  <h1 th:text="'Departments of ' + ${supermarket.getName()}"></h1>
+  <div>
+    <ol>
+      <li th:each="department : ${supermarket.getDepartmentList()}">
+        <span th:if="${department.isRefrigerated()}"
+          th:text="${department.getName()} + ' - Refrigerated department'"></span>
+        <span th:if="${!department.isRefrigerated()}" th:text="${department.getName()} + ' - No refrigeration'"></span>
+        <ul>
+          <li th:each="staff : ${department.getResponsible()}"><span
+              th:text="'responsible: ' + ${staff.getFirstName()} + ' ' + ${staff.getSurName()}"></span></li>
+          <img onerror="src='img/noimage.jpg'" th:src="${department.getPhoto()}" />
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <a href="/">Back to homepage</a>
 
 </body>
+
 </html>

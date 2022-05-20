@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department found!</title>
+    <link rel="stylesheet" type="text/css" href="img/style.css"/>
+</head>
+<body>
+
+    <h1 th:text="'We found this department: ' + ${department.getName()}"></h1>
+
+    <div>
+        <ul style="list-style:none">
+            <li th:if="${department.isRefrigerated()}" th:text="'Refrigerated department'"></li>
+            <li th:if="${!department.isRefrigerated()}" th:text="'No refrigeration'"></li>
+            <li th:text="'Responsible: ' + ${staff.getFirstName()} + ' ' + ${staff.getSurName()}"></li>
+            <img onerror="src='img/noimage.jpg'" th:src="${department.getPhoto()}" />
+        </ul>
+    </div>
+
+    <a href="/">Back to homepage</a>
+
+</body>
+</html>
