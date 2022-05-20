@@ -147,12 +147,23 @@ public class MainController {
         int supermarketIndex = Integer.parseInt(request.getParameter("supermarketIndex"));
         int staffIndex = Integer.parseInt(request.getParameter("staffIndex"));
 
+        if (supermarketIndex < 0) {
+            model.addAttribute("errorMessage", "You didn't choose a supermarket!");
+            return "error";
+        }
+
+        if (staffIndex < 0) {
+            model.addAttribute("errorMessage", "You didn't choose a staff member!");
+            return "error";
+        }
+
         Supermarket returnSupermarket = supermarketArrayList.get(supermarketIndex);
         Staff returnStaff = staffArrayList.get(staffIndex);
 
         Department department = new Department(departmentName);
         department.setPhoto(photo);
         department.setRefrigerated(isRefrigerated);
+        department.setResponsible(returnStaff);
 
         returnSupermarket.addDepartment(department);
 

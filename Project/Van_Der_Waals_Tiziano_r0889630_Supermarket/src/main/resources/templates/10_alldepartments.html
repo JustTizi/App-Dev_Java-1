@@ -9,8 +9,8 @@
 
 <h1 th:text="'Departments of ' + ${supermarket.getName()}"></h1>
 <div>
-  <ol id="customers">
-    <li th:each="department : ${supermarket.getDepartmentList()}"><span th:text="${department}"></span>
+  <ol>
+    <li th:each="department : ${supermarket.getDepartmentList()}"><span th:text="${department.getName()}"></span>
     </li>
   </ol>
 </div>
